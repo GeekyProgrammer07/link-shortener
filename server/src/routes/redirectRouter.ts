@@ -18,8 +18,18 @@ redirectRouter.get("/:param", async (req: Request, res: Response): Promise<any> 
       message: "Link not found",
     });
   }
+  
+  const temp: number = shortLink.accessCount + 1
+  await prisma.uRLs.update({
+    where: {
+      shortCode: param
+    },
+    data: {
+      accessCount: temp
+    }
+  })
 
   const realLink = shortLink.url;
-  
+
   return res.redirect(realLink);
 });
