@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "URLs" ALTER COLUMN "accessCount" SET DEFAULT 0;
